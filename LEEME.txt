@@ -1,0 +1,50 @@
+Pasos para instalar PostgreSQL y XAMPP:
+========================================================
+1. Instalar XAMPP:
+Ir a la página oficial de XAMPP.
+Descargar la versión correspondiente al sistema operativo (Windows, macOS o Linux).
+Instalar el paquete descargado siguiendo los pasos del asistente de instalación.
+Una vez instalado, abrir el panel de control de XAMPP y arranca los servicios de Apache y MySQL (aunque en este caso usaremos PostgreSQL, se deja MySQL por defecto).
+
+2. Instalar PostgreSQL:
+========================================================
+Descargar PostgreSQL desde su página oficial.
+Siguir el proceso de instalación y asegurarse de instalar pgAdmin (herramienta gráfica para administrar PostgreSQL).
+Durante la instalación, asegurarse de recordar la contraseña del superusuario (por defecto es postgres).
+Una vez instalado, abre pgAdmin y conéctarse a la base de datos PostgreSQL usando la contraseña definida.
+3. Configurar PostgreSQL para trabajar con XAMPP:
+Para usar PostgreSQL con XAMPP,se necesita tener un archivo PHP que permita la conexión a PostgreSQL, ya que XAMPP no lo incluye por defecto.
+En la instalación de XAMPP, ver a la carpeta php y abre el archivo php.ini.
+Buscar y descomentar (elimina el ; al inicio de la línea) las siguientes extensiones:
+extension=pgsql
+extension=pdo_pgsql
+Guarda los cambios y reinicia Apache desde el panel de control de XAMPP.
+Funcionamiento de los archivos en localhost:
+
+3. Estructura de archivos:
+========================================================
+Colocar los archivos en la carpeta htdocs dentro del directorio de instalación de XAMPP. Por ejemplo, si el XAMPP está instalado en C:\xampp, los archivos deben estar en:
+
+C:\xampp\htdocs\{Nombre de proyectos (Productos)}\
+Los archivos que se mencionan deben ser así:
+
+productos.css (para el estilo de la página).
+productos.php (para la lógica del servidor y la conexión con PostgreSQL).
+productos.js (para la funcionalidad en el cliente).
+index.html (el archivo que se carga inicialmente en el navegador).
+
+4. Funcionamiento de los archivos:
+========================================================
+productos.css: Este archivo contiene los estilos de la página. Es cargado por el archivo index.html para definir la apariencia de la web.
+
+productos.php: Este archivo interactúa con la base de datos PostgreSQL para recuperar o insertar información sobre productos. Usará la extensión pg_connect() para conectarse a PostgreSQL y consultar o insertar datos. Asegurarse de tener configurada correctamente la conexión a la base de datos en este archivo.
+
+Ejemplo básico de conexión:
+
+productos.js: Este archivo manejará la lógica en el cliente. Puede estar relacionado con las interacciones en la página, como el envío de formularios o la actualización dinámica de productos usando AJAX, por ejemplo.
+
+index.html: Este es el archivo de inicio que se abre cuando se accede a localhost/{Nombre de proyectos (Productos)}/. Dentro de él, se enlazará el archivo productos.css para los estilos y productos.js para las interacciones en el cliente. Si se necesita cargar información de productos desde el servidor, se puede hacer peticiones a productos.php.
+
+Ejemplo básico de un index.html:
+
+Si se desea que el archivo productos.php devuelva datos de la base de datos, se puede usar AJAX para obtener la información sin recargar la página.

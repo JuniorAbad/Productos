@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Producto</title>
+    <link rel="stylesheet" href="productos.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Formulario de Producto</h1>
+        <form id="productForm">
+            <div class="form-group">
+                <label for="codigo">Código</label>
+                <input type="text" id="codigo" name="codigo" placeholder="PROD01K">
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Set Comedor">
+            </div>
+
+            <div class="form-group">
+                <label for="bodega">Bodega</label>
+                <select id="bodega" name="bodega">
+                    <option value="">Seleccione</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sucursal">Sucursal</label>
+                <select id="sucursal" name="sucursal">
+                    <option value="">Seleccione</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="moneda">Moneda</label>
+                <select id="moneda" name="moneda">
+                    <option value="">Seleccione</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="text" id="precio" name="precio" placeholder="1500">
+            </div>
+
+            <div class="form-group materiales">
+                <label>Material del Producto</label>
+                <div>
+                    <input type="checkbox" id="material1" name="materiales[]" value="Plástico">
+                    <label for="material1">Plástico</label>
+                    <input type="checkbox" id="material2" name="materiales[]" value="Metal">
+                    <label for="material2">Metal</label>
+                    <input type="checkbox" id="material3" name="materiales[]" value="Madera">
+                    <label for="material3">Madera</label>
+                    <input type="checkbox" id="material4" name="materiales[]" value="Vidrio">
+                    <label for="material4">Vidrio</label>
+                    <input type="checkbox" id="material5" name="materiales[]" value="Textil">
+                    <label for="material5">Textil</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripción..."></textarea>
+            </div>
+
+            <button type="button" id="guardarBtn">Guardar Producto</button>
+        </form>
+    </div>
+    <script src="productos.js"></script>
+</body>
+</html>
