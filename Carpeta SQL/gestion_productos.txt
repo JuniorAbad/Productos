@@ -1,0 +1,103 @@
+CREATE DATABASE gestion_productos;
+
+-- Tabla para las bodegas
+CREATE TABLE bodegas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
+INSERT INTO bodegas (nombre) VALUES
+('Bodega 1'),
+('Bodega 2'),
+('Bodega 3'),
+('Bodega 4'),
+('Bodega 5'),
+('Bodega 6'),
+('Bodega 7'),
+('Bodega 8'),
+('Bodega 9'),
+('Bodega 10'),
+('Bodega 11'),
+('Bodega 12'),
+('Bodega 13'),
+('Bodega 14'),
+('Bodega 15');
+
+-- Tabla para las sucursales
+CREATE TABLE sucursales (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    bodega_id INT REFERENCES bodegas(id) ON DELETE CASCADE
+);
+
+INSERT INTO sucursales (nombre, bodega_id) VALUES
+('Sucursal 1', 1),
+('Sucursal 2', 1),
+('Sucursal 3', 2),
+('Sucursal 4', 2),
+('Sucursal 5', 3),
+('Sucursal 6', 3),
+('Sucursal 7', 4),
+('Sucursal 8', 4),
+('Sucursal 9', 5),
+('Sucursal 10', 5),
+('Sucursal 11', 6),
+('Sucursal 12', 6),
+('Sucursal 13', 7),
+('Sucursal 14', 7),
+('Sucursal 15', 8);
+
+-- Tabla para las monedas
+CREATE TABLE monedas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
+INSERT INTO monedas (nombre) VALUES
+('DÓLAR'),
+('EURO'),
+('PESO'),
+('LIBRA ESTERLINA'),
+('YEN'),
+('SOLES'),
+('DÓLAR CANADIENSE'),
+('DÓLAR AUSTRALIANO'),
+('REAL'),
+('RUPIA'),
+('WON SURCOREANO'),
+('RUBLO'),
+('YUAN'),
+('DINAR'),
+('BITCOIN');
+
+-- Tabla para los productos
+CREATE TABLE productos (
+    id SERIAL PRIMARY KEY,
+    codigo VARCHAR(15) NOT NULL UNIQUE,
+    nombre VARCHAR(50) NOT NULL,
+    bodega_id INT REFERENCES bodegas(id) ON DELETE SET NULL,
+    sucursal_id INT REFERENCES sucursales(id) ON DELETE SET NULL,
+    moneda_id INT REFERENCES monedas(id) ON DELETE SET NULL,
+    precio NUMERIC(10, 2) NOT NULL,
+    materiales TEXT NOT NULL,
+    descripcion TEXT NOT NULL
+);
+
+INSERT INTO productos (codigo, nombre, bodega_id, sucursal_id, moneda_id, precio, materiales, descripcion) VALUES
+('PROD001', 'Mesa de Vidrio', 1, 1, 1, 150.00, 'Vidrio,Metal', 'Mesa de vidrio templado con patas de metal.'),
+('PROD002', 'Silla de Plástico', 2, 2, 2, 25.00, 'Plástico', 'Silla ligera y resistente hecha de plástico.'),
+('PROD003', 'Set de Comedor', 3, 3, 1, 500.00, 'Madera,Textil', 'Set de comedor para 4 personas, incluye sillas y mesa.'),
+('PROD004', 'Armario Modular', 4, 4, 3, 750.00, 'Madera,Metal', 'Armario modular de madera con acabados metálicos.'),
+('PROD005', 'Espejo Decorativo', 5, 5, 4, 120.00, 'Vidrio', 'Espejo decorativo con marco minimalista.'),
+('PROD006', 'Lámpara de Techo', 6, 6, 1, 80.00, 'Metal,Textil', 'Lámpara de techo moderna con pantalla textil.'),
+('PROD007', 'Sofá de Tela', 7, 7, 5, 300.00, 'Textil,Madera', 'Sofá cómodo para 3 personas, tapizado en tela.'),
+('PROD008', 'Mesa Auxiliar', 8, 8, 6, 90.00, 'Madera', 'Mesa auxiliar pequeña para espacios reducidos.'),
+('PROD009', 'Librero Grande', 9, 9, 7, 450.00, 'Madera', 'Librero de madera con múltiples compartimentos.'),
+('PROD010', 'Silla de Oficina', 10, 10, 8, 130.00, 'Metal,Textil', 'Silla ergonómica para oficina.'),
+('PROD011', 'Cama Matrimonial', 11, 11, 9, 650.00, 'Madera,Textil', 'Cama matrimonial con cabecera tapizada.'),
+('PROD012', 'Mesa de Centro', 12, 12, 10, 220.00, 'Vidrio,Madera', 'Mesa de centro con combinación de vidrio y madera.'),
+('PROD013', 'Perchero Moderno', 13, 13, 11, 70.00, 'Metal', 'Perchero de diseño moderno, ideal para recibidores.'),
+('PROD014', 'Banco Alto', 14, 14, 12, 110.00, 'Madera', 'Banco alto de madera para barras de cocina.'),
+('PROD015', 'Butaca Reclinable', 15, 15, 13, 400.00, 'Textil,Madera', 'Butaca reclinable cómoda, perfecta para salas.');
+
+
