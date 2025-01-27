@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             // Limpiar el select de sucursales antes de agregar nuevas opciones
-            sucursalSelect.innerHTML = '<option value="">Seleccione</option>';
+            sucursalSelect.innerHTML = '<option value=""></option>';
 
             data.forEach(sucursal => {
                 const option = document.createElement("option");
